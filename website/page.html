@@ -1,0 +1,372 @@
+<nav>
+  <a class="nav-brand" href="#">Airbnb Market Structures</a>
+  <ul class="nav-links">
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#data">Data</a></li>
+    <li><a href="#analysis">Analysis</a></li>
+    <li><a href="#explorer">Explorer</a></li>
+    <li><a href="#ethics">Ethics</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Data Visualisation Project, LUISS 2026</p>
+    <h1>Airbnb Market Structures:<br>
+      <span class="city-rome">Rome</span> vs <span class="city-cop">Copenhagen</span>
+    </h1>
+    <p class="hero-question">To what extent is the Airbnb market concentrated among professional hosts, and how does this concentration translate into urban pressure across neighbourhoods?</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>33,228</strong>Rome listings (cleaned)</div>
+      <div class="hero-meta-item"><strong>13,307</strong>Copenhagen listings (cleaned)</div>
+      <div class="hero-meta-item"><strong>Sep 2025</strong>Data snapshot</div>
+      <div class="hero-meta-item"><strong>Inside Airbnb</strong>Data source</div>
+    </div>
+  </div>
+</div>
+
+<section id="introduction">
+  <div class="container">
+    <p class="section-label">Introduction</p>
+    <h2>From sharing economy to commercial market</h2>
+    <p>Airbnb launched as a peer-to-peer idea: spare rooms, occasional guests, local hosts. That original model has not disappeared, but in many cities it now coexists with something quite different. A small number of professional operators manage large portfolios of listings, running what amounts to a commercial hotel business through the platform. This shift matters for policymakers because it changes who benefits from short-term rentals, and at what cost to ordinary residents.</p>
+    <p>This project compares two European cities that sit at opposite ends of that spectrum. <strong>Rome</strong> is a high-intensity tourism market with fragmented regulation, where Airbnb has grown with little constraint. <strong>Copenhagen</strong> operates under stricter housing rules and shows a very different pattern. Comparing them reveals how much regulatory context shapes market structure and, ultimately, urban pressure.</p>
+    <p>The analysis combines host-level concentration metrics with a neighbourhood-level Urban Pressure Index (UPI) that captures listing density and year-round availability. The goal is not just to describe who is on the platform, but to show where their activity concentrates spatially and what that means for the city.</p>
+    <p class="audience-note">This site is aimed at <strong>urban policymakers and city administrators</strong> evaluating short-term rental regulation, and at <strong>journalists and informed members of the public</strong> interested in the housing and tourism dynamics behind Airbnb's growth.</p>
+
+    <p class="section-label" style="margin-top:2.5rem;">What we set out to answer</p>
+    <div class="task-grid">
+      <div class="task-card">
+        <div class="task-num">T1</div>
+        <h3>Assess market concentration</h3>
+        <p>How are listings distributed across hosts? Does a small number of operators control a disproportionate share of supply?</p>
+      </div>
+      <div class="task-card">
+        <div class="task-num">T2</div>
+        <h3>Classify host types</h3>
+        <p>Distinguish casual (1 listing), semi-professional (2 to 4), and professional hosts (5 or more) and measure their respective market shares.</p>
+      </div>
+      <div class="task-card">
+        <div class="task-num">T3</div>
+        <h3>Compare cities</h3>
+        <p>Identify structural differences between Rome and Copenhagen across price, availability, and host concentration.</p>
+      </div>
+      <div class="task-card">
+        <div class="task-num">T4</div>
+        <h3>Analyse spatial distribution</h3>
+        <p>Where within each city are listings and professional hosts geographically concentrated?</p>
+      </div>
+      <div class="task-card">
+        <div class="task-num">T5</div>
+        <h3>Evaluate urban pressure</h3>
+        <p>Measure neighbourhood-level intensity through a composite Urban Pressure Index combining listing density and year-round availability.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="data">
+  <div class="container">
+    <p class="section-label">Data</p>
+    <h2>Two cities, one platform</h2>
+    <p>Both datasets come from <a href="https://insideairbnb.com" style="color:var(--cop);">Inside Airbnb</a>, a public transparency project that scrapes and publishes Airbnb listing data. September 2025 snapshots were selected for both cities to ensure comparability. Listings with missing prices and extreme price outliers above the 99th percentile were removed. Because a large share of Copenhagen listings had no price recorded, price was excluded from the Urban Pressure Index to keep comparisons fair across both cities.</p>
+
+    <div class="data-grid">
+      <div class="data-card">
+        <div class="data-card-header">
+          <div class="city-dot" style="background:var(--rome);"></div>
+          <strong style="font-size:14px;">Rome</strong>
+        </div>
+        <div class="data-card-body">
+          <div class="data-row"><span class="data-row-label">Raw listings</span><span class="data-row-val">37,652</span></div>
+          <div class="data-row"><span class="data-row-label">After cleaning</span><span class="data-row-val">33,228</span></div>
+          <div class="data-row"><span class="data-row-label">Neighbourhoods</span><span class="data-row-val">15</span></div>
+          <div class="data-row"><span class="data-row-label">Median price</span><span class="data-row-val">132 EUR / night</span></div>
+          <div class="data-row"><span class="data-row-label">Median availability</span><span class="data-row-val">260 days / yr</span></div>
+          <div class="data-row"><span class="data-row-label">Listings available 180+ days</span><span class="data-row-val">68.1%</span></div>
+          <div class="data-row"><span class="data-row-label">Gini coefficient</span><span class="data-row-val">0.39</span></div>
+        </div>
+      </div>
+      <div class="data-card">
+        <div class="data-card-header">
+          <div class="city-dot" style="background:var(--cop);"></div>
+          <strong style="font-size:14px;">Copenhagen</strong>
+        </div>
+        <div class="data-card-body">
+          <div class="data-row"><span class="data-row-label">Raw listings</span><span class="data-row-val">22,994</span></div>
+          <div class="data-row"><span class="data-row-label">After cleaning</span><span class="data-row-val">13,307</span></div>
+          <div class="data-row"><span class="data-row-label">Neighbourhoods</span><span class="data-row-val">11</span></div>
+          <div class="data-row"><span class="data-row-label">Median price</span><span class="data-row-val">161 EUR / night</span></div>
+          <div class="data-row"><span class="data-row-label">Median availability</span><span class="data-row-val">115 days / yr</span></div>
+          <div class="data-row"><span class="data-row-label">Listings available 180+ days</span><span class="data-row-val">38.4%</span></div>
+          <div class="data-row"><span class="data-row-label">Gini coefficient</span><span class="data-row-val">0.11</span></div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+    <h3>How we measure urban pressure</h3>
+    <p style="font-size:14px;color:var(--gray-500);">The Urban Pressure Index (UPI) is a composite metric that measures the relative intensity of Airbnb activity across neighbourhoods. It combines two components, each normalised separately within each city, so that the index captures relative pressure within a city rather than absolute differences between them:</p>
+    <div class="upi-formula">
+      <p>UPI = 0.5 x listing count<sub>norm</sub> + 0.5 x availability<sub>norm</sub></p>
+    </div>
+    <p style="font-size:14px;color:var(--gray-500);">Equal weights reflect a neutral methodological assumption: in the absence of strong evidence that listing density matters more than availability or vice versa, both contribute equally. A robustness check including normalised price produces similar neighbourhood rankings, giving confidence that the exclusion does not distort the findings.</p>
+  </div>
+</section>
+
+<section id="analysis">
+  <div class="container">
+    <p class="section-label">Visual Analysis</p>
+    <h2>What the data shows</h2>
+    <p style="color:var(--gray-500);">The visualisations below build the argument step by step: first showing who controls the market, then how that control plays out across neighbourhoods, where it lands on a map, and finally whether higher prices follow higher pressure. Read in order for the full picture, or jump to the view that interests you most.</p>
+
+    <div class="viz-block">
+      <div class="viz-header">
+        <div>
+          <div class="viz-title">The scale of the difference, at a glance</div>
+          <div class="viz-desc">Each bubble represents the share of total listings controlled by a host type in each city. Rome's professional and semi-professional bubbles dwarf their Copenhagen equivalents. This single chart captures the core finding of the entire analysis.</div>
+        </div>
+      </div>
+      <div class="viz-frame">
+        <iframe src="https://public.tableau.com/views/Cartella2_17774709061460/ExplanatoryDashboard?:embed=yes&:display_count=no&:showVizHome=no&:toolbar=no" width="850" height="850" frameborder="0" scrolling="no"></iframe>
+      </div>
+    </div>
+
+    <div class="viz-block">
+      <div class="viz-header">
+        <div>
+          <div class="viz-title">Who owns the night? (creative visualisation)</div>
+          <div class="viz-desc">Every dot is one Airbnb listing. Blue dots are casual hosts, yellow are semi-professional, red are professional. Neighbourhoods run left to right in order of professional host share. In Rome, red saturates the entire grid. In Copenhagen, blue dominates. The visual makes the ownership gap impossible to miss: Rome has 29% of its 33,228 listings controlled by professional hosts, compared to just 8% of Copenhagen's 13,307.</div>
+        </div>
+      </div>
+      <div class="viz-frame">
+        <img src="https://romevscopenhagen.wpcomstaging.com/wp-content/uploads/2026/05/creative_viz_night.png" alt="Who Owns the Night: every dot is one Airbnb listing, coloured by host type, across all neighbourhoods in Rome and Copenhagen" style="max-width:900px;width:100%;height:auto;display:block;">
+      </div>
+    </div>
+
+    <div class="viz-block">
+      <div class="viz-header">
+        <div>
+          <div class="viz-title">Which neighbourhoods face the most pressure?</div>
+          <div class="viz-desc">All 26 neighbourhoods ranked by their Urban Pressure Index score. Copenhagen's Indre By tops the chart, but Rome's I Centro Storico follows close behind, and Rome accounts for the bulk of the mid-table. This ranking is the starting point for identifying where targeted regulation is most needed.</div>
+        </div>
+      </div>
+      <div class="viz-frame">
+        <iframe src="https://public.tableau.com/views/Cartella2_17774709061460/NeighbourhoodRankingdashboard?:embed=yes&:display_count=no&:showVizHome=no&:toolbar=no" width="900" height="600" frameborder="0" scrolling="no"></iframe>
+      </div>
+    </div>
+
+    <div class="viz-block">
+      <div class="viz-header">
+        <div>
+          <div class="viz-title">Where professional hosts have taken hold</div>
+          <div class="viz-desc">These maps show the share of listings managed by professional hosts in each neighbourhood. In Rome, commercial operators are spread across the entire city with the historic centre darkest. In Copenhagen, professional concentration is almost entirely confined to the city core. The contrast is striking and has direct implications for where housing pressure is being created.</div>
+        </div>
+      </div>
+      <div class="viz-frame">
+        <iframe src="https://public.tableau.com/views/Cartella2_17774709061460/ProfessionalHostConcentrationRomevsCopenhagen?:embed=yes&:display_count=no&:showVizHome=no&:toolbar=no" width="850" height="850" frameborder="0" scrolling="no"></iframe>
+      </div>
+    </div>
+
+    <div class="viz-block">
+      <div class="viz-header">
+        <div>
+          <div class="viz-title">Mapping urban pressure across both cities</div>
+          <div class="viz-desc">The Urban Pressure Index translated onto a map. Red neighbourhoods face the most intense Airbnb activity relative to their city. In Rome, pressure is spread broadly across many districts. In Copenhagen, it is tightly concentrated near the centre. Each city requires a different regulatory response.</div>
+        </div>
+      </div>
+      <div class="viz-frame">
+        <iframe src="https://public.tableau.com/views/Cartella2_17774709061460/UPIDashboard?:embed=yes&:display_count=no&:showVizHome=no&:toolbar=no" width="850" height="850" frameborder="0" scrolling="no"></iframe>
+      </div>
+    </div>
+
+    <div class="viz-block">
+      <div class="viz-header">
+        <div>
+          <div class="viz-title">Do higher prices signal higher pressure?</div>
+          <div class="viz-desc">Each point is a neighbourhood, plotted by its average nightly price and its UPI score. Neighbourhoods with higher average prices also tend to face higher urban pressure. Copenhagen's Indre By stands out at the top right. The relationship is not causal, but it is consistent and worth monitoring for any regulator tracking market trends.</div>
+        </div>
+      </div>
+      <div class="viz-frame">
+        <iframe src="https://public.tableau.com/views/Cartella2_17774709061460/PricevsUrbanPressurebyNeighbourhooddash?:embed=yes&:display_count=no&:showVizHome=no&:toolbar=no" width="850" height="850" frameborder="0" scrolling="no"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="explorer">
+  <div class="container">
+    <p class="section-label">Interactive Explorer</p>
+    <h2>Compare cities side by side</h2>
+    <p style="color:var(--gray-500);">Numbers tell a different story depending on the city. Toggle between Rome and Copenhagen to see how key market indicators shift. Pay particular attention to the host type bars. They capture, in a single glance, just how differently the two cities distribute their supply.</p>
+    <div class="viz-block" style="margin-top:1.5rem;">
+      <div class="viz-header">
+        <div class="viz-title">City market explorer</div>
+        <div class="viz-desc">Interactive component, T2 and T3</div>
+      </div>
+      <div class="explorer-wrap">
+        <div class="city-toggle">
+          <button class="city-btn active" id="btn-rome" onclick="setCity('Rome')">Rome</button>
+          <button class="city-btn" id="btn-cop" onclick="setCity('Copenhagen')">Copenhagen</button>
+        </div>
+        <div class="explorer-stats">
+          <div class="exp-stat">
+            <div class="exp-stat-label">Median price / night</div>
+            <div class="exp-stat-val" id="val-price">132 EUR</div>
+            <div class="exp-stat-sub" id="sub-price">lower than Copenhagen</div>
+          </div>
+          <div class="exp-stat">
+            <div class="exp-stat-label">Median availability</div>
+            <div class="exp-stat-val" id="val-avail">260 days</div>
+            <div class="exp-stat-sub" id="sub-avail">71% of the year</div>
+          </div>
+          <div class="exp-stat">
+            <div class="exp-stat-label">Available 180+ days</div>
+            <div class="exp-stat-val" id="val-180">68.1%</div>
+            <div class="exp-stat-sub" id="sub-180">near full-time operation</div>
+          </div>
+          <div class="exp-stat">
+            <div class="exp-stat-label">Mean UPI score</div>
+            <div class="exp-stat-val" id="val-upi">0.27</div>
+            <div class="exp-stat-sub" id="sub-upi">urban pressure index</div>
+          </div>
+          <div class="exp-stat">
+            <div class="exp-stat-label">Top 10% host dominance</div>
+            <div class="exp-stat-val" id="val-dom">39.2%</div>
+            <div class="exp-stat-sub" id="sub-dom">of all listings</div>
+          </div>
+        </div>
+        <div class="exp-bars-label">Share of listings by host type</div>
+        <div class="exp-bar-row">
+          <span class="exp-bar-name">Casual (1 listing)</span>
+          <div class="exp-bar-track"><div class="exp-bar-fill" id="bar-casual" style="width:41.6%;background:var(--cop);"></div></div>
+          <span class="exp-bar-pct" id="pct-casual">41.6%</span>
+        </div>
+        <div class="exp-bar-row">
+          <span class="exp-bar-name">Semi-professional (2 to 4)</span>
+          <div class="exp-bar-track"><div class="exp-bar-fill" id="bar-semi" style="width:29.0%;background:var(--accent);"></div></div>
+          <span class="exp-bar-pct" id="pct-semi">29.0%</span>
+        </div>
+        <div class="exp-bar-row">
+          <span class="exp-bar-name">Professional (5+)</span>
+          <div class="exp-bar-track"><div class="exp-bar-fill" id="bar-pro" style="width:29.4%;background:var(--rome);"></div></div>
+          <span class="exp-bar-pct" id="pct-pro">29.4%</span>
+        </div>
+        <div class="exp-insight" id="exp-insight">
+          <span id="insight-text">In Rome, professional hosts are only 5.1% of all hosts yet control <strong>29.4% of all listings</strong>. The top 1% of hosts alone account for 13.9% of the market. Combined with semi-professional hosts, 58.4% of Rome's supply is managed by multi-listing operators, a market that has moved well beyond peer-to-peer.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ethics">
+  <div class="container">
+    <p class="section-label">Ethics</p>
+    <h2>How data visualisation can mislead, and how to spot it</h2>
+    <p>As a policymaker or journalist reading data about short-term rentals, you will encounter charts that appear to prove strong causal relationships between professionalisation and housing pressure. Some of those charts will be produced honestly. Others will use legitimate design choices, no false numbers, no fabricated data, to create an impression that the data cannot actually support. The two visualisations below show how the same underlying dataset produces two very different stories depending on those choices.</p>
+    <p style="color:var(--gray-500);">Toggle between them to see how easily a chart can mislead without falsifying a single data point. Learning to read these signals is part of interpreting data responsibly.</p>
+
+    <div class="viz-block" style="margin-top:1.5rem;">
+      <div class="viz-header">
+        <div>
+          <div class="viz-title" id="hat-viz-title">White hat: honest representation</div>
+          <div class="viz-desc" id="hat-viz-desc">Scatter plot with confidence intervals, correlation statistics, and a causal disclaimer. Both cities shown.</div>
+        </div>
+        <div class="city-toggle" style="margin-bottom:0;">
+          <button class="city-btn active" id="btn-white" onclick="setHat('white')">White hat</button>
+          <button class="city-btn" id="btn-black" onclick="setHat('black')">Black hat</button>
+        </div>
+      </div>
+      <div style="padding:1.5rem;">
+        <img id="hat-image" src="https://romevscopenhagen.wpcomstaging.com/wp-content/uploads/2026/05/white_hat.jpg" alt="White hat scatter plot showing professional host share vs UPI for both cities with confidence intervals" style="width:100%;height:auto;display:block;border-radius:8px;">
+        <div id="hat-explanation" style="margin-top:1.25rem;padding:1rem 1.25rem;border-radius:10px;border-left:3px solid var(--cop);font-size:13px;color:var(--gray-700);line-height:1.65;">
+          <strong>Why this is white hat:</strong> Both cities are shown simultaneously, preventing selective presentation of the stronger result. Both axes are anchored at zero. 95% confidence intervals are shaded around each regression line, making uncertainty visible. Pearson correlation coefficients and p-values are annotated directly on the chart. The caption states explicitly that correlation does not imply causation and identifies the UPI as an author-constructed composite rather than an official statistic. A reader who looks carefully walks away with an accurate picture of both the relationship and its limits.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="conclusion">
+  <div class="container">
+    <p class="section-label">Conclusion</p>
+    <h2>What this means for cities</h2>
+    <p>The evidence is consistent across every metric. Rome's Airbnb market has undergone a structural shift away from occasional home-sharing toward commercial operation by a small class of professional operators. Copenhagen has not. The implications are different in each city, and so should the policy response be.</p>
+
+    <div class="finding-list">
+      <div class="finding">
+        <div class="finding-num">1</div>
+        <div class="finding-body">
+          <h3>In Rome, a small operator class controls the majority of supply</h3>
+          <p>Professional hosts represent just 5.1% of all Rome hosts but control 29.4% of listings. Adding semi-professional hosts, multi-listing operators together control 58.4% of the entire market. The top 10% of hosts account for 39.2% of supply, and the top 1% alone hold 13.9%. Rome's Gini coefficient of 0.39 confirms that listing ownership is substantially unequal.</p>
+        </div>
+      </div>
+      <div class="finding">
+        <div class="finding-num">2</div>
+        <div class="finding-body">
+          <h3>Copenhagen's platform still functions as originally intended</h3>
+          <p>96% of Copenhagen hosts manage a single listing, and casual hosts control 85.3% of all supply. The top 10% of hosts account for just 20.0% of listings, and the top 1% control 9.1%. The Gini coefficient of 0.11 reflects a broadly equitable distribution. This suggests that tighter regulation can preserve the peer-to-peer character of the platform.</p>
+        </div>
+      </div>
+      <div class="finding">
+        <div class="finding-num">3</div>
+        <div class="finding-body">
+          <h3>Availability reveals commercial intensity, not just tourism seasonality</h3>
+          <p>A listing available 260 days a year is not a holiday home used occasionally. It is a commercial property. Rome's median availability of 260 days against Copenhagen's 115 days, and 68.1% of Rome listings available for six months or more compared to 38.4% in Copenhagen, point to structural differences in how the platform is being used, not just differences in tourist demand.</p>
+        </div>
+      </div>
+      <div class="finding">
+        <div class="finding-num">4</div>
+        <div class="finding-body">
+          <h3>Pressure concentrates in historic districts, not across entire cities</h3>
+          <p>Urban pressure is spatially selective. In Rome, I Centro Storico has both the highest UPI score and the highest professional host share at 38.8%. In Copenhagen, Indre By and Vesterbro-Kongens Enghave record the most relative pressure. This matters for regulation: city-wide rules may be too blunt. Neighbourhood-level data supports targeted intervention where pressure is highest.</p>
+        </div>
+      </div>
+      <div class="finding">
+        <div class="finding-num">5</div>
+        <div class="finding-body">
+          <h3>Professional hosting and urban pressure co-occur, but causation is unproven</h3>
+          <p>Neighbourhoods with higher professional host shares also tend to show higher UPI scores. The Pearson correlation is 0.55 in Rome (p = 0.035) and 0.73 in Copenhagen (p = 0.010). This is not causal evidence. Tourism demand, urban centrality, and housing stock characteristics may drive both simultaneously. But the spatial co-occurrence is consistent, statistically significant, and policy-relevant regardless of direction.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+    <h3>Limitations and next steps</h3>
+    <div class="limit-grid">
+      <div class="limit-card">
+        <span class="limit-tag">Missing prices</span>
+        <p style="font-size:14px;color:var(--gray-500);margin:0;">41% of Copenhagen listings had no price recorded. Dropping these rows may introduce selection bias and limits direct price comparisons between cities.</p>
+      </div>
+      <div class="limit-card">
+        <span class="limit-tag">Single snapshot</span>
+        <p style="font-size:14px;color:var(--gray-500);margin:0;">Both datasets reflect September 2025 only. Seasonal availability and pricing patterns are not captured. A longitudinal dataset would allow structural trends to be separated from seasonal variation.</p>
+      </div>
+      <div class="limit-card">
+        <span class="limit-tag">No housing context</span>
+        <p style="font-size:14px;color:var(--gray-500);margin:0;">The UPI measures Airbnb activity intensity, not housing displacement directly. Incorporating population density and residential housing supply would allow the index to be reinterpreted as a measure of housing stress.</p>
+      </div>
+      <div class="limit-card">
+        <span class="limit-tag">Platform data only</span>
+        <p style="font-size:14px;color:var(--gray-500);margin:0;">Inside Airbnb captures only publicly listed properties. Off-platform and unlisted rentals are not reflected, potentially underestimating the true scale of commercial short-term rental activity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-note">
+        <p>Data Visualisation Project 2026, LUISS University. Data sourced from <a href="https://insideairbnb.com" style="color:var(--cop);">Inside Airbnb</a> (September 2025). Analysis conducted in Python. Visualisations built in Tableau and JavaScript.</p>
+      </div>
+      <div class="footer-meta">
+        <p>Professors: Blerina Sinaimeri,</p>
+        <p>Giacomo de Luca, Giulia Lauretti</p>
+        <p style="margin-top:8px;color:var(--gray-300);">Submission: May 10, 2026</p>
+      </div>
+    </div>
+  </div>
+</footer>
