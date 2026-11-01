@@ -1,0 +1,16 @@
+[project]
+name = "airbnb-rome-vs-copenhagen"
+version = "0.1.0"
+description = "Airbnb market concentration and urban pressure: Rome vs Copenhagen (Inside Airbnb, September 2025)"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "geopandas>=1.1.3",
+    "jupyter>=1.1.1",
+    "matplotlib>=3.10.9",
+    "numpy>=2.4.4",
+    "pandas>=3.0.2",
+    "scikit-learn>=1.8.0",
+    "scipy>=1.17.1",
+    "seaborn>=0.13.2",
+]
